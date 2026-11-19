@@ -137,4 +137,33 @@ WebRblx's UI and Node.js API in this rebuild are newly authored for this project
 
 ---
 
+flowchart LR
+  U[User Browser] --> UI[WebRblx UI<br/>HTML + CSS + JavaScript]
+
+  UI --> L[Game Launcher<br/>/play?placeId=ID]
+
+  L --> E[Browser Client<br/>WebAssembly + workers]
+
+  E -- Roblox requests --> SW[sw.js<br/>Service Worker]
+
+  SW -- postMessage --> H[host.js<br/>Browser networking]
+
+  H -- HTTPS transport --> W[Wisp server<br/>/wisp/]
+
+  W --> R[Roblox HTTPS APIs]
+
+  E -- WebTransport, direct --> Q[Roblox game servers]
+
+  UI --> F[Friends API<br/>Presence lookup]
+
+  F --> P[Roblox Presence API]
+
+  P --> F
+
+  F -- Join friend --> L
+
+  UI --> N[Node.js Backend<br/>Express API]
+
+  N --> API[WebRblx API Routes]
+
 **WebRblx 2.1.0 · An InvaderX project**
