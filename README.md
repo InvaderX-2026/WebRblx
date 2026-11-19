@@ -136,7 +136,7 @@ WebRblx's UI and Node.js API in this rebuild are newly authored for this project
 - [ ] Production deployment guide, telemetry, and accessibility audit
 
 ---
-
+```mermaid
 flowchart LR
   U[User Browser] --> UI[WebRblx UI<br/>HTML + CSS + JavaScript]
 
@@ -165,5 +165,6 @@ flowchart LR
   UI --> N[Node.js Backend<br/>Express API]
 
   N --> API[WebRblx API Routes]
+```
 
 **WebRblx 2.1.0 · An InvaderX project**
