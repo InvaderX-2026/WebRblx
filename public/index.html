@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111318">
+  <meta name="description" content="WebRblx — discover Roblox experiences and launch them from the web.">
+  <title>WebRblx — Discover experiences</title>
+  <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="/" aria-label="WebRblx home"><span class="brand-mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 3.8 28.2 9 23 30.2 1.8 25 7 3.8Z"/><path d="m11.2 11.2 9.6 2.4-2.4 9.6-9.6-2.4 2.4-9.6Z" class="brand-cut"/></svg></span><span>Web<span>Rblx</span></span></a>
+      <div class="side-label">DISCOVER</div>
+      <nav class="side-nav" aria-label="Main navigation">
+        <a class="nav-link active" href="#discover" data-view="discover"><span class="nav-icon">⌂</span>Discover</a>
+        <a class="nav-link" href="#friends" data-view="friends"><span class="nav-icon">♧</span>Friends</a>
+        <a class="nav-link" href="#recent" data-view="recent"><span class="nav-icon">◷</span>Recently played</a>
+      </nav>
+      <div class="side-divider"></div>
+      <div class="side-label">YOUR SPACE</div>
+      <nav class="side-nav">
+        <a class="nav-link" href="#favorites" data-view="favorites"><span class="nav-icon">☆</span>Favorites</a>
+        <a class="nav-link" href="#account" data-view="account"><span class="nav-icon">◎</span>Account</a>
+      </nav>
+      <div class="sidebar-bottom"><div class="mini-status"><span class="status-dot"></span><span>WebRblx services</span><b>Online</b></div><div class="powered">A project by <strong>InvaderX</strong></div></div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="icon-button mobile-menu" id="menuButton" aria-label="Open navigation">☰</button>
+        <div class="breadcrumbs"><span>WebRblx</span><i>/</i><strong id="breadcrumbCurrent">Discover</strong></div>
+        <div class="top-actions"><button class="icon-button" id="themeButton" aria-label="Toggle color theme" title="Toggle theme">◐</button><a class="profile-chip" href="#account" data-view="account"><span class="avatar">W</span><span class="profile-name">Guest</span><span class="chevron">⌄</span></a></div>
+      </header>
+
+      <section class="content" id="discoverView" data-page="discover">
+        <div class="welcome-row"><div><div class="eyebrow">YOUR NEXT ADVENTURE STARTS HERE</div><h1>Discover <span>experiences.</span></h1><p class="subheading">Find something new to play, or jump back into a favorite.</p></div><div class="welcome-orb" aria-hidden="true"><span>✦</span></div></div>
+        <section class="hero-card"><div class="hero-copy"><span class="pill"><span class="pill-dot"></span> THE WEBRBLX EXPERIENCE</span><h2>Play your way.<br><em>Explore more.</em></h2><p>Search experiences, check out creators, and launch supported games from one clean browser dashboard.</p><a class="primary-button" href="#search" id="heroSearchButton">Explore experiences <span>↗</span></a></div><div class="hero-art" aria-hidden="true"><div class="art-grid"></div><div class="art-cube cube-one"></div><div class="art-cube cube-two"></div><div class="art-ring"></div><div class="art-spark">✦</div></div></section>
+
+        <section class="section-block" id="search"><div class="section-heading"><div><div class="eyebrow">FIND YOUR NEXT FAVORITE</div><h2>Search experiences</h2></div><span class="section-note">Powered by public Roblox discovery data</span></div><form class="search-form" id="searchForm"><span class="search-icon">⌕</span><input id="searchInput" type="search" minlength="2" maxlength="80" placeholder="Search games and experiences..." autocomplete="off"><button type="submit">Search <span>→</span></button></form><div class="search-hint">Try a title, genre, or creator keyword.</div></section>
+
+        <section class="section-block"><div class="section-heading"><div><div class="eyebrow">GET STARTED</div><h2>Explore popular searches</h2></div></div><div class="topic-row"><button class="topic-chip" data-query="obby">Obby</button><button class="topic-chip" data-query="roleplay">Roleplay</button><button class="topic-chip" data-query="tycoon">Tycoon</button><button class="topic-chip" data-query="horror">Horror</button><button class="topic-chip" data-query="simulator">Simulator</button><button class="topic-chip" data-query="adventure">Adventure</button></div></section>
+
+        <section class="section-block results-section"><div class="section-heading"><div><div class="eyebrow">DISCOVERY</div><h2 id="resultsTitle">Featured search results</h2></div><span class="result-count" id="resultCount"></span></div><div class="game-grid" id="gameGrid"><div class="empty-state"><div class="empty-icon">⌕</div><h3>Search for an experience</h3><p>Results will appear here when you search.</p></div></div></section>
+      </section>
+
+      <section class="content page-view" id="friendsView" data-page="friends" hidden><div class="eyebrow">PLAY TOGETHER</div><h1>Your <span>friends.</span></h1><p class="subheading">Find public friends, check available presence, and jump to a friend’s joinable server when Roblox exposes it.</p><div class="lookup-card"><form id="friendForm" class="lookup-form"><label for="friendUserId">Roblox user ID</label><div class="lookup-row"><input id="friendUserId" inputmode="numeric" pattern="[0-9]+" placeholder="Enter a Roblox user ID"><button class="primary-button" type="submit">Find friends →</button></div></form><p class="muted small">Presence is retrieved from Roblox’s public presence endpoint. Joining hands off to Roblox’s official launcher; privacy settings may prevent joining.</p></div><div id="friendResults" class="friend-results"></div></section>
+
+      <section class="content page-view" id="recentView" data-page="recent" hidden><div class="eyebrow">YOUR HISTORY</div><h1>Recently <span>played.</span></h1><p class="subheading">Experiences you opened on this browser.</p><div class="game-grid" id="recentGrid"></div></section>
+      <section class="content page-view" id="favoritesView" data-page="favorites" hidden><div class="eyebrow">YOUR COLLECTION</div><h1>Your <span>favorites.</span></h1><p class="subheading">Keep the experiences you want to find again.</p><div class="game-grid" id="favoritesGrid"></div></section>
+      <section class="content page-view" id="accountView" data-page="account" hidden><div class="eyebrow">PROFILE & PREFERENCES</div><h1>Your <span>space.</span></h1><p class="subheading">WebRblx is a discovery and launch companion. Roblox account sign-in is not collected by this site.</p><div class="account-card"><div class="account-avatar">W</div><div><h2>Guest session</h2><p>Local browser preferences only</p></div><span class="account-badge">Not signed in</span></div><div class="info-card"><h3>Account security</h3><p>Never paste a Roblox password or <code>.ROBLOSECURITY</code> cookie into WebRblx. Use Roblox's official sign-in and launch experience for account actions.</p></div><div class="info-card"><h3>About WebRblx</h3><p>A browser-first Roblox discovery interface, built by InvaderX. WebRblx is an independent community project and is not affiliated with or endorsed by Roblox Corporation.</p></div></section>
+
+      <footer class="footer"><span>© <span id="year"></span> WebRblx · An InvaderX project</span><span><a href="/docs/API.md">API docs</a><a href="/README.md">Documentation</a></span></footer>
+    </main>
+  </div>
+  <div class="toast-region" id="toastRegion" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>
